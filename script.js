@@ -51,6 +51,6 @@
         	setTimeout(()=>{a+(Math.floor(Math.random()*2))}, m*1000);
         }
         if (b < 1) {
-		b = b.toFixed(5)
+		b.toFixed(5)
 	}
 	setInterval(u, 50);
