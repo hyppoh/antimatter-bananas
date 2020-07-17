@@ -48,6 +48,9 @@
 			}
         };
         if (d > 0) {
-        setTimeout(()=>{a+(Math.floor(Math.random()*2))}, m*1000);
+        	setTimeout(()=>{a+(Math.floor(Math.random()*2))}, m*1000);
         }
-        setInterval(u, 50);
+        if (b < 0) {
+		b = b.toFixed(5)
+	}
+	setInterval(u, 50);
