@@ -30,6 +30,13 @@
                 a+=(Math.ceil(Math.random()*5))
             };
         };
+        function salvageDozen() {
+		if (a > 12) {
+			a-= 12;
+			b+= 0.00012;
+			c+=(Math.ceil(Math.random()*24) + 12);
+		};
+	};	
         function u() {
             ignore[0].innerText = "you have " + a + " bananas";
             ignore[1].innerText = "you have " + c + " banana seeds";
