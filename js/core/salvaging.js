@@ -18,7 +18,7 @@ function salvageDozen() {
 	if (player.bananas.lt(12)) return;
 	player.bananas = player.bananas.sub(12);
 	player.antimatter = player.antimatter.add(0.00012);
-	player.seeds = player.seeds.add((Math.round(Math.random()*12)+6);
+	player.seeds = player.seeds.add((Math.round(Math.random()*12)+6));
 }
 setInterval(() => {
 	if (player.pendingseeds.gte(1)) {
