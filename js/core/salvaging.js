@@ -12,7 +12,7 @@ function plant() {
 function destroy() {
 	if (player.trees.lt(1)) return;
 	player.trees = player.trees.sub(1);
-	player.bananas = player.bananas.add((Math.round(Math.random()*5));
+	player.bananas = player.bananas.add((Math.round(Math.random()*5)));
 }
 function salvageDozen() {
 	if (player.bananas.lt(12)) return;
