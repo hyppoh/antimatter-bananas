@@ -4,19 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>banana</title>
- <script defer type="text/javascript" src="script.js"></script>
+    <script defer type="text/javascript" src="js/break_infinity.js"></script>
+    <script defer type="text/javascript" src="js/core/initGame.js"></script>
+    <script defer type="text/javascript" src="js/core/ui.js"></script>
+    <script defer type="text/javascript" src="js/core/salvaging.js"></script>
+    <script defer type="text/javascript" src="js/core/saving.js"></script>
+    <script defer type="text/javascript" src="js/loading.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
 </head>
 <body>
-antimatter bananas
-<br>
-    <div id="a">you have 6 bananas</div>
-    <div id="b">you have 0 banana seeds</div>
-    <div id="c">you have 0 antimatter</div>
-    <div id="d">you have 0 banana trees</div>
+    antimatter bananas
+    <br>
+    <div id="bananaamt">you have 6 bananas</div>
+    <div id="seedamt">you have 0 banana seeds</div>
+    <div id="pendingamt">you have 0 banana seeds waiting to grow into trees</div>
+    <div id="antimatteramt">you have 0 antimatter</div>
+    <div id="treeamt">you have 0 banana trees</div>
     <button id="d" onclick="salvage()">salvage a banana</button>
     <button id="e" onclick="plant()">plant banana seed</button>
     <button id="f" onclick="destroy()">salvage a banana tree</button>
     <button id="g" onclick="salvageDozen()">salvage a dozen bananas</button>
-<footer><a href="https://hyppoh.github.io/antimatter-bananas/changelog.html">changelog and recent updates </a></footer>
+    <footer><a href="https://hyppoh.github.io/antimatter-bananas/changelog.html">changelog and recent updates </a></footer>
 </body>
 </html>
