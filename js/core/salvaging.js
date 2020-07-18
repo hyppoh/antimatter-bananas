@@ -22,7 +22,7 @@ function salvageDozen() {
 }
 setInterval(() => {
 	if (player.pendingseeds.gte(1)) {
-		var tosub = player.pendingseeds.pow(0.5).ceil().max(3).min(player.pendingseeds);
+		var tosub = player.pendingseeds.pow(0.5).ceil().max(8).min(player.pendingseeds);
 		player.pendingseeds = player.pendingseeds.sub(tosub);
 		player.trees = player.trees.add(tosub);
 	}
