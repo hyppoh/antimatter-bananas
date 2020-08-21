@@ -17,4 +17,4 @@ function updateUI() {
 		player.lastTick = performance.now();
 	}
 }
-setInterval(updateUI, 33);
+setInterval(updateUI, 50);
