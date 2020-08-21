@@ -7,7 +7,7 @@ function salvage() {
 function plant() {
 	if (player.seeds.lt(1)) return;
 	player.seeds = player.seeds.sub(1);
-	player.growing = player.growing.add(1);
+	player.pendingseeds = player.pendingseeds.add(1);
 }
 function destroy() {
 	if (player.trees.lt(1)) return;
@@ -21,9 +21,9 @@ function salvageDozen() {
 	player.seeds = player.seeds.add((Math.round(Math.random()*12)+6));
 }
 setInterval(() => {
-	if (player.growing.gte(1)) {
-		var tosub = player.growing.pow(0.5).ceil().max(8).min(player.growing);
-		player.growing = player.growing.sub(tosub);
+	if (player.pendingseeds.gte(1)) {
+		var tosub = player.pendingseeds.pow(0.5).ceil().max(8).min(player.pendingseeds);
+		player.pendingseeds = player.pendingseeds.sub(tosub);
 		player.trees = player.trees.add(tosub);
 	}
 }, m*1000);
