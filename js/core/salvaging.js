@@ -22,9 +22,9 @@ function salvageDozen() {
 	player.seeds = player.seeds.add((Math.round(Math.random()*12)+6));
 }
 function sellDozen() {
-	if (player.bananas.gte(144)) return;
-	player.bananas = player.bananas.sub(12)
-	player.money = player.money.add(Math.round(Math.random()*7)+2)
+	if (player.bananas.lte(144)) return;
+	player.bananas = player.bananas.sub(12);
+	player.money = player.money.add(Math.round(Math.random()*7)+2);
 }
 setInterval(() => {
 	if (player.growing.gte(1)) {
