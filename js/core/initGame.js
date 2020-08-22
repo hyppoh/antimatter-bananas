@@ -1,4 +1,4 @@
-let initPlayer = {
+var initPlayer = {
 	bananas: new Decimal(6),
 	antimatter: new Decimal(0),
 	seeds: new Decimal(0),
@@ -8,9 +8,9 @@ let initPlayer = {
 	freespace: new Decimal(1)
 	lastTick: performance.now()
 };
-let player = initPlayer;
-let time = 30;
-let m = 15;
+var player = initPlayer;
+var time = 30;
+var m = 15;
 var el = {
 	bananaamt: document.getElementById("bananaamt"),
 	amamt: document.getElementById("antimatteramt"),
