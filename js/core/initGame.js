@@ -5,7 +5,7 @@ var initPlayer = {
 	growing: new Decimal(0),
 	trees: new Decimal(0),
 	money: new Decimal(0),
-	freespace: new Decimal(1)
+	freespace: new Decimal(1),
 	lastTick: performance.now()
 };
 var player = initPlayer;
