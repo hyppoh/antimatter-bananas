@@ -12,9 +12,9 @@ function updateUI() {
 	el.treeamt.innerText = `you have ${toSci(player.trees)} banana trees to produce bananas for you`;
 	el.moneyamt.innerText = `you have ${toSci(player.money)} money to spend`;
 	el.freespaceamt.innerText = `you have ${toSci(player.freespace)} free space to use for planting`;
-	if (performance.now()-player.lastTick > m*1000) {
+	if (Date.now()-player.lastTick > m*1000) {
 		player.bananas = player.bananas.add(player.trees);
-		player.lastTick = performance.now();
+		player.lastTick = Date.now();
 	}
 }
 setInterval(updateUI, 33);
