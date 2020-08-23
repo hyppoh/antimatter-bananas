@@ -26,6 +26,28 @@ function sellDozen() {
 	player.bananas = player.bananas.sub(12);
 	player.money = player.money.add(Math.round(Math.random()*7)+2);
 }
+function toSci(num, places, placesafter1000) {
+	if (places == undefined) places = 0;
+	if (placesafter1000 == undefined) placesafter1000 = 2;
+	num = new Decimal(num);
+	return (num.e < 3) ? (num.m*Math.pow(10, num.e)).toFixed(places) : `${num.m.toFixed(placesafter1000)}e${num.e}`
+}
+function toSci(num, places, placesafter1000) {
+	if (places == undefined) places = 0;
+	if (placesafter1000 == undefined) placesafter1000 = 2;
+	num = new Decimal(num);
+	return (num.e < 3) ? (num.m*Math.pow(10, num.e)).toFixed(places) : `${num.m.toFixed(placesafter1000)}e${num.e}`
+}
+function buyBananaSpace() {
+	if (player.money.lte(100)) return;
+	player.money = player.money.sub(100);
+	player.bananaspace = player.bananaspace.add(1);
+}
+function buyTreeSpace() {
+	if (player.money.lte(2000)) return;
+	player.money = player.money.sub(2000);
+	player.treespace = player.treespace.add(1);
+}
 setInterval(() => {
 	if (player.growing.gte(1)) {
 		var tosub = player.growing.pow(0.5).ceil().max(8).min(player.growing);
