@@ -11,7 +11,8 @@ function updateUI() {
 	el.amamt.innerText = `you have ${toSci(player.antimatter, 5)} antimatter`;
 	el.treeamt.innerText = `you have ${toSci(player.trees)} banana trees to produce bananas for you`;
 	el.moneyamt.innerText = `you have ${toSci(player.money)} money to spend`;
-	el.freespaceamt.innerText = `you have ${toSci(player.freespace)} free space to use for planting`;
+	el.treespaceamt.innerText = `you have ${toSci(player.treespace)} free space to use for planting`;
+	el.bananaspaceamt.innerText = `you have ${toSci(player.bananaspace)} free space to use for store your bannas`;
 	if (Date.now()-player.lastTick > m*1000) {
 		player.bananas = player.bananas.add(player.trees);
 		player.lastTick = Date.now();
