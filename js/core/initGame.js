@@ -5,9 +5,12 @@ let initPlayer = {
 	growing: new Decimal(0),
 	trees: new Decimal(0),
 	money: new Decimal(0),
-	freespace: new Decimal(1),
+	treespace: new Decimal(1),
+	bananaspace: new Decimal (1),
 	lastTick: Date.now()
 };
+player.bananas = Math.min(player.bananas, player.bananaspace * 200);
+player.trees = Math.min(player.trees, player.treespace * 30 - player.growing);
 var player = initPlayer;
 let time = 30;
 let m = 15;
@@ -18,5 +21,6 @@ var el = {
 	treeamt: document.getElementById("treeamt"),
 	growingamt: document.getElementById("growingamt"),
 	moneyamt: document.getElementById("moneyamt"),
-	freespaceamt: document.getElementById("freespaceamt")
+	treespaceamt: document.getElementById("treespaceamt"),
+	bananaspaceamt: document.getElementById("treespaceamt")
 };
