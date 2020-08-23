@@ -15,7 +15,7 @@ var player = initPlayer;
 let time = 30;
 let m = 15;
 var el = {
-	bananaamt: document.getElementById("bananaamt"),
+	bananasamt: document.getElementById("bananasamt"),
 	amamt: document.getElementById("antimatteramt"),
 	seedamt: document.getElementById("seedamt"),
 	treeamt: document.getElementById("treeamt"),
