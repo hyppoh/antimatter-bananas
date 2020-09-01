@@ -9,9 +9,9 @@ let initPlayer = {
 	bananaspace: new Decimal (1),
 	lastTick: Date.now()
 };
+var player = initPlayer;
 player.bananas = Math.min(player.bananas, player.bananaspace * 200);
 player.trees = Math.min(player.trees, player.treespace * 30 - player.growing);
-var player = initPlayer;
 let time = 30;
 let m = 15;
 var el = {
