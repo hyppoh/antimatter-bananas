@@ -1,26 +1,23 @@
 function load(save) {
 	if (typeof save !== "object") return;
 	if (save === null) return;
-	Object.keys(initPlayer).forEach(function (key, index) {
-		if (save[key] === undefined) {
-			save[key] = initPlayer[key];
-		} else if (typeof save[key] === "string" && typeof initPlayer[key] === "object") {
-			save[key] = new Decimal(save[key]);
-		} else if (typeof initPlayer[key] === "object" && typeof save[key] === "object") {
-			Object.keys(initPlayer).forEach(function (key2, index2) {
-				if (save[key] === undefined) {
-					save[key] = initPlayer[key];
-				} else if (typeof save[key][key2] === "string" && typeof initPlayer[key][key2] === "object") {
-					save[key][key2] = new Decimal(save[key][key2]);
-				} else if (typeof save[key] != typeof initPlayer[key]) {
-					save[key][key2] = initPlayer[key][key2];
-				}
-			});
-		} else if (typeof save[key] != typeof initPlayer[key]) {
-			save[key] = initPlayer[key];
+	player = runParse(save, initPlayer);
+}
+function runParse(obj, obj2) {
+	Object.keys(obj2).forEach(function (key, index) {
+		if (key != "proto") {
+			if (obj[key] === undefined) {
+				obj[key] = obj2[key];
+			} else if (typeof obj[key] === "string" && typeof obj2[key] === "object") {
+				obj[key] = new Decimal(obj[key]);
+			} else if (typeof obj2[key] === "object" && typeof obj[key] === "object") {
+				obj[key] = runParse(obj[key], obj2[key]);
+			} else if (typeof obj[key] != typeof obj2[key]) {
+				obj[key] = obj2[key];
+			}
 		}
 	});
-	player = save;
+	return (obj);
 }
 var parsedsave = JSON.parse(localStorage.getItem("hyppobananassave"));
 if (localStorage.getItem("hyppobananassave") !== null) {
