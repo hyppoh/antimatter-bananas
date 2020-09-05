@@ -52,6 +52,8 @@ setInterval(() => {
 	if (player.growing.gte(1)) {
 		var tosub = player.growing.pow(0.5).ceil().max(8).min(player.growing);
 		player.growing = player.growing.sub(tosub);
-		player.trees = player.trees.add(tosub);
+		player.trees = player.trees.add(tosub);		
+		player.bananas = Decimal.min(player.bananas.add(player.trees), player.bananaspace.mul(200));
+		player.trees = player.trees.min(player.treespace.mul(30).sub(player.growing));
 	}
 }, m*1000);
