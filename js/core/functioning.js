@@ -1,11 +1,10 @@
 function salvage() {
 	if (player.bananas.lt(1)) return;
 	player.bananas = player.bananas.sub(1);
-	player.antimatter = player.antimatter.add(0.00001);
 	player.seeds = player.seeds.add(Math.round(Math.random()*2));
 }
 function plant() {
-	if (player.seeds.lt(1)) return;
+	if (player.seeds.lt(1) || player.trees.add(player.growing.add(1)).gt(player.treespace.mul(30))) return;
 	player.seeds = player.seeds.sub(1);
 	player.growing = player.growing.add(1);
 }
@@ -22,9 +21,9 @@ function salvageDozen() {
 	player.seeds = player.seeds.add((Math.round(Math.random()*12)+6));
 }
 function sellDozen() {
-	if (player.bananas.lte(144)) return;
+	if (player.bananas.lte(12)) return;
 	player.bananas = player.bananas.sub(12);
-	player.money = player.money.add(Math.round(Math.random()*7)+2);
+	player.money = player.money.add(6);
 }
 function toSci(num, places, placesafter1000) {
 	if (places == undefined) places = 0;
@@ -44,16 +43,17 @@ function buyBananaSpace() {
 	player.bananaspace = player.bananaspace.add(1);
 }
 function buyTreeSpace() {
-	if (player.money.lte(2000)) return;
-	player.money = player.money.sub(2000);
+	if (player.money.lte(100)) return;
+	player.money = player.money.sub(100);
 	player.treespace = player.treespace.add(1);
 }
 setInterval(() => {
-	if (player.growing.gte(1)) {
-		var tosub = player.growing.pow(0.5).ceil().max(8).min(player.growing);
-		player.growing = player.growing.sub(tosub);
-		player.trees = player.trees.add(tosub);		
-		player.bananas = Decimal.min(player.bananas.add(player.trees), player.bananaspace.mul(200));
-		player.trees = player.trees.min(player.treespace.mul(30).sub(player.growing));
+	var toSub = 0;
+	if (player.growing.gt(0)) {
+		var tosub = player.growing.ceil().pow(0.2).ceil().max(2).min(player.growing.max(0)).max(0).ceil().div(20);
 	}
-}, m*1000);
+	player.growing = player.growing.sub(tosub).max(0);
+	player.trees = player.trees.add(tosub);
+	player.trees = player.trees.min(player.treespace.mul(30));
+	player.bananas = player.bananas.add(player.trees.div(60)).min(player.bananaspace.mul(200));
+}, 50);

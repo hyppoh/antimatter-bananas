@@ -26,23 +26,28 @@
     <link rel="stylesheet" type="text/css" href="styles.css"/>
 </head>
 <body><div id="main">
-    antimatter bananas
+    <span style="font-size: 30px;">Welcome to Antimatter Bananas</span>
     <br>
-    <div>you have {{toSci(player.bananas)}} bananas</div>
-    <div>you have {{toSci(player.seeds)}} banana seeds</div>
-    <div>you have {{toSci(player.growing)}} banana seeds waiting to grow into trees</div>
-    <div>you have {{toSci(player.antimatter)}} antimatter</div>
-    <div>you have {{toSci(player.trees)}} banana trees</div>
-    <div>you have {{toSci(player.money)}} money to spend</div>
-    <div>you have {{toSci(player.treespace)}} free space to use for planting</div>
-    <div>you have {{toSci(player.bananaspace)}} free space to store your bananas</div>
-    <button onclick="salvage()">salvage a banana</button>
-    <button onclick="plant()">plant banana seed</button>
-    <button onclick="destroy()">salvage a banana tree</button>
-    <button onclick="salvageDozen()">salvage a dozen bananas</button>
-    <button onclick="sellDozen()">sell a dozen bananas</button>
-    <button onclick="buyBananaSpace()">buy space for your bananas</button>
-    <button onclick="buyTreeSpace()">buy land for your banana trees</button>
+    <div style="display: flex;">
+        <div style="width: 33%; height: 300px; border: 3px solid white; padding: 10px">
+            <div>you have {{toSci(player.bananas)}} bananas</div>
+            <div>you have {{toSci(player.seeds)}} banana seeds</div>
+            <div>you have {{toSci(player.growing)}} banana seeds waiting to grow into trees</div>
+            <div>you have {{toSci(player.trees)}} banana trees</div>
+            <div>you have ${{toSci(player.money, 2)}}</div>
+            <button onclick="salvage()">salvage a banana</button>
+            <button onclick="plant()">plant banana seed</button>
+            <button onclick="destroy()">salvage a banana tree</button>
+            <button onclick="salvageDozen()">salvage a dozen bananas</button>
+            <button onclick="sellDozen()">sell a dozen bananas</button>
+        </div>
+        <div style="width: 33%; height: 300px; border: 3px solid white; padding: 10px">
+            <div>you have {{toSci(player.treespace.mul(30))}} free space to use for planting</div>
+            <div>you have {{toSci(player.bananaspace.mul(200))}} free space to store your bananas</div>
+            <button onclick="buyBananaSpace()">buy space for your bananas. Cost: $100.00</button>
+            <button onclick="buyTreeSpace()">buy land for your banana trees. Cost: $100.00</button>
+        </div>
+    </div>
     <footer><a href="https://hyppoh.github.io/antimatter-bananas/changelog.html">changelog and recent updates </a></footer>
     <br><br><br><br><br>
     <button onclick="if (confirm('Do you want to reset the game?')) {
