@@ -2,7 +2,12 @@
 	color: #fff;
 	background-color: #000;
 	outline: none;
+	font-family: "Liberation Mono", monospace;
+	font-size: 14pt;
 }
 button {
 	border: 2px solid #fff;
+}
+button:active {
+	background: #444;
 }

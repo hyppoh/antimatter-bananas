@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
-<head>
+<head lang="en">
 	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
 	<title></title>
 	<meta name="generator" content="LibreOffice 6.1.5.1 (Linux)"/>
@@ -9,40 +9,63 @@
 	<style type="text/css">
 		@page { size: 8.27in 11.69in; margin: 0.79in }
 		p { margin-bottom: 0.1in; line-height: 115%; background: transparent }
-		pre { font-family: "Liberation Mono", monospace; font-size: 10pt; background: transparent }
 	</style>
 </head>
-<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><pre><!DOCTYPE html>
-<html lang="en">
+<body lang="en-US" link="#000080" vlink="#800000" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>banana</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script defer type="text/javascript" src="js/break_infinity.js"></script>
     <script defer type="text/javascript" src="js/core/initGame.js"></script>
-    <script defer type="text/javascript" src="js/core/ui.js"></script>
-    <script defer type="text/javascript" src="js/core/salvaging.js"></script>
+    <script defer type="text/javascript" src="js/core/functioning.js"></script>
     <script defer type="text/javascript" src="js/core/saving.js"></script>
     <script defer type="text/javascript" src="js/loading.js"></script>
+    <script defer type="text/javascript" src="js/core/ui.js"></script>
     <link rel="stylesheet" type="text/css" href="styles.css"/>
 </head>
-<body>
-    antimatter bananas
+<body><div id="main">
+    <span style="font-size: 30px;">Welcome to Antimatter Bananas</span>
     <br>
-    <div id="bananaamt">you have 6 bananas</div>
-    <div id="seedamt">you have 0 banana seeds</div>
-    <div id="growingamt">you have 0 banana seeds waiting to grow into trees</div>
-    <div id="antimatteramt">you have 0 antimatter</div>
-    <div id="treeamt">you have 0 banana trees to produce bananas for you</div>
-	<div id="moneyamt">you have 0 money to spend</div>
-	<div id="freespaceamt">you have 1 free space to use for planting</div>
-    <button id="d" onclick="salvage()">salvage a banana</button>
-    <button id="e" onclick="plant()">plant banana seed</button>
-    <button id="f" onclick="destroy()">salvage a banana tree</button>
-    <button id="g" onclick="salvageDozen()">salvage a dozen bananas</button>
-	<button id="h" onclick="sellDozen()">sell a dozen bananas</button>
+    <div style="display: flex;">
+        <div style="width: 33%; height: 300px; border: 3px solid white; padding: 10px">
+            <div>you have {{toSci(player.bananas)}} bananas</div>
+            <div>you have {{toSci(player.seeds)}} banana seeds</div>
+            <div>you have {{toSci(player.growing)}} banana seeds waiting to grow into trees</div>
+            <div>you have {{toSci(player.trees)}} banana trees</div>
+            <div>you have ${{toSci(player.money, 2)}}</div>
+            <button onclick="salvage()">salvage a banana</button>
+            <button onclick="plant()">plant banana seed</button>
+            <button onclick="destroy()">salvage a banana tree</button>
+            <button onclick="salvageDozen()">salvage a dozen bananas</button>
+            <button onclick="sellDozen()">sell a dozen bananas</button>
+        </div>
+        <div style="width: 33%; height: 300px; border: 3px solid white; padding: 10px">
+            <div>you have {{toSci(player.treespace.mul(30))}} free space to use for planting</div>
+            <div>you have {{toSci(player.bananaspace.mul(200))}} free space to store your bananas</div>
+            <button onclick="buyBananaSpace()">buy space for your bananas. Cost: $100.00</button>
+            <button onclick="buyTreeSpace()">buy land for your banana trees. Cost: $100.00</button>
+        </div>
+    </div>
     <footer><a href="https://hyppoh.github.io/antimatter-bananas/changelog.html">changelog and recent updates </a></footer>
-</body>
-</html></pre>
+    <br><br><br><br><br>
+    <button onclick="if (confirm('Do you want to reset the game?')) {
+        player = initPlayer;
+        mainVue.player = player;
+        mainVue.$forceUpdate();
+        initPlayer = {
+            bananas: new Decimal(6),
+            antimatter: new Decimal(0),
+            seeds: new Decimal(0),
+            growing: new Decimal(0),
+            trees: new Decimal(0),
+            money: new Decimal(0),
+            treespace: new Decimal(1),
+            bananaspace: new Decimal (1),
+            lastTick: Date.now()
+        };
+    }">Reset the game</button>
+</div></body>
 </body>
 </html>
